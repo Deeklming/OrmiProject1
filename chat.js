@@ -47,13 +47,11 @@ const printQuestion = async () => {
     if (question){
     // let li = document.createElement("li");
     // li.classList.add("question");
-
     let p = document.createElement("p");
     p.classList.add("question");
 
     questionData.map((el) => {
         // li.innerText = el.content;
-        // console.log(el.content);
         p.innerText = el.content;
         });
 
@@ -68,16 +66,13 @@ const printQuestion = async () => {
 const printAnswer = (answer) => {
     // let li = document.createElement("li");
     // li.classList.add("answer");
-
     let p = document.createElement("p");
     p.classList.add("answer");
 
     // li.innerText = answer;
-
     p.innerText = answer;
 
     // $chatList.appendChild(li);
-
     $chatView.appendChild(p);
 };
 
@@ -107,5 +102,5 @@ $form.addEventListener("submit", (e) => {
     sendQuestion(question);
     apiPost();
     printQuestion();
-    console.log(data);
+    // console.log(data);
     });
