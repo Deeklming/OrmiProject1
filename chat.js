@@ -1,10 +1,7 @@
 const $form = document.querySelector("form");
 const $input = document.querySelector("input");
-const $chatList = document.querySelector("ul");
-const $chatView = document.querySelector(".chat");
 const $chatH5 = document.querySelector(".chath5");
 const $chatP = document.querySelector(".chatp");
-const $conT = document.querySelector(".ai-cont");
 
 // openAI API
 let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
@@ -34,7 +31,6 @@ const sendQuestion = (que) => {
     let Q={
         role: "user",
         content: `${que.trim()}로 만들 수 있는 음식은 뭐가 있나요?`,
-        // content: que,
     };
     data.forEach((it, index) => {
         if(it.role === "user"){
@@ -48,23 +44,10 @@ const sendQuestion = (que) => {
 // 화면에 질문 그려주는 함수
 const printQuestion = async () => {
     if (question){
-    // let li = document.createElement("li");
-    // li.classList.add("question");
-    // let p = document.createElement("h5");
-    // p.classList.add("question");
-
     questionData.map((el) => {
-        // li.innerText = el.content;
-        // p.innerText = el.content;
         $chatH5.innerText = el.content;
         });
     $chatP.innerText = "";
-
-    // const btn = document.getElementById('answer_save');
-    // btn.style.display = 'none';
-
-    // $chatList.appendChild(li);
-    // $chatView.appendChild(p);
 
     questionData = [];
     question = false;
@@ -72,44 +55,8 @@ const printQuestion = async () => {
 
 // 화면에 답변 그려주는 함수
 const printAnswer = (answer) => {
-    // let li = document.createElement("li");
-    // li.classList.add("answer");
-    // let p = document.createElement("p");
-    // p.classList.add("answer");
-
-    // li.innerText = answer;
-    // p.innerText = answer;
-
-    // $chatList.appendChild(li);
-    // $chatView.appendChild(p);
-
     $chatP.innerText = answer;
-
-    // let d = document.createElement("div");
-    // let d_cls = "save-chat block max-w p-6 mt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700";
-    // d_cls.split(" ").forEach(ele => {
-    //     d.classList.add(ele);
-    //     console.log(ele);
-    // });
-    
-    // $conT.appendChild.add(d);
-
-
-    // const btn = document.getElementById('answer_save');
-    // btn.style.display = 'block';
 };
-
-// 답변을 저장하는 함수
-// const saveAnswer = () => {
-//     let saveText = $chatView.innerHTML;
-//     console.log(saveText);
-
-//     let a = document.createElement("div");
-//     a.classList.add("save-chat block max-w p-6 mt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700");
-
-//     $conT.appendChild(a);
-//     // <div class="save-chat block max-w p-6 mt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"></div>
-// };
 
 // api 요청보내는 함수
 const apiPost = async () => {
